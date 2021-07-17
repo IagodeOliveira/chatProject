@@ -1,1 +1,1 @@
-Chitchat is a chat simulation made basically using nodeja express and socketio
+Chitchat is a chat simulation made basically using nodejs express and socketio
