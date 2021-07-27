@@ -1,8 +1,8 @@
-## ChitChat
+# ChitChat
 
-### Overview
+## Overview
 
-Users should be able to:
+###Users should be able to:
 
 - Register
 - Sign in
@@ -10,7 +10,7 @@ Users should be able to:
 - See all previous and current messages from that room
 - Know when another user enters/leaves the same room
 
-### Built with
+## Built with
 
 Chitchat is a Realtime Chat App made basically using Node.js, Express and Socket.IO
 
