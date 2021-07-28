@@ -32,8 +32,11 @@ mongoose.connection.once("open", () => { console.log("DB loaded")
 
     // Run when a client connects
     io.on('connection', socket => {
+      console.log('here1');
         socket.on('joinRoom', ({ username, room }) => {
+          console.log('here2');
             userJoin(socket.id, username, room).then(user => {
+              console.log('here3');
                 socket.join(user.room);
 
                 // Welcome current user
