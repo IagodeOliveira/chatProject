@@ -17,14 +17,12 @@ document.addEventListener('submit', (e) => {
     }
 
     fetch(URL, options).then(res => {
-      console.log('aki');
-      console.log(res.status);
         if(res.status == 200) {
             let token = res.headers.get('authorization-token');
             localStorage.setItem("authorization-token", token);
             // window.location.href = 'http://localhost:5000/chat.html';
             // window.location.href = 'http://192.168.0.14:5000/chat.html';
-            window.location.href = 'https://chat-teste1.herokuapp.com/chat.html';
+            location.href = 'https://chat-teste1.herokuapp.com/chat.html';
         } else {
             res.text().then(data => {
                 alert(data);
@@ -37,7 +35,7 @@ document.addEventListener('submit', (e) => {
 
 // if(location.href == 'http://localhost:5000/#404') {
     // if(location.href == 'http://192.168.0.14:5000/#404') {
-      if(location.href == 'http://chat-teste1.herokuapp.com/#404') {
+      if(location.href == 'https://chat-teste1.herokuapp.com/#404') {
     let modal = document.getElementsByClassName("modal")[0];
     let mCont = document.getElementsByClassName("modal-content")[0];
     let btn = document.getElementsByTagName("span")[0];
