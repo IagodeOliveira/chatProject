@@ -21,7 +21,6 @@ mongoose.connection.on("error", () => {
 });
 mongoose.connection.once("open", () => {
   console.log("DB loaded")
-  console.log('con');
     const server = http.createServer(app);
     const io = socketIO(server);
 
