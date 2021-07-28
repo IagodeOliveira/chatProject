@@ -20,6 +20,7 @@ mongoose.connection.on("error", () => {
     console.log("An error happend on connection");
 });
 mongoose.connection.once("open", () => {
+});
   console.log("DB loaded")
     const server = http.createServer(app);
     const io = socketIO(server);
@@ -107,4 +108,4 @@ mongoose.connection.once("open", () => {
     server.listen( PORT, () => {
         console.log(`Server running on port: ${PORT}`);
     });
-});
+//});
