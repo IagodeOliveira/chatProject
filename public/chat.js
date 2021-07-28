@@ -48,37 +48,37 @@ function redirect() {
     }
 
     fetch(url, options).then(res => {
-        if(res.status == 200) {
+        //if(res.status == 200) {
             document.body.style.display = 'block'; 
             usuario.username = res.headers.get('username');
             usuario.room = res.headers.get('room');
-        } else {
-            res.text().then(data => {
-                document.body.style.display = 'block';
-                document.body.innerHTML =
-                `<div class="modal">
-                    <div class="modal-content">
-                        <span>&times;</span>
-                        <h2 class="warning">${data} </h2>
-                        <h3>Return to main page: 
-                        <a href="/" class="back">here</a></h3>
-                    </div>
-                </div>`;
+        // } else {
+        //     res.text().then(data => {
+        //         document.body.style.display = 'block';
+        //         document.body.innerHTML =
+        //         `<div class="modal">
+        //             <div class="modal-content">
+        //                 <span>&times;</span>
+        //                 <h2 class="warning">${data} </h2>
+        //                 <h3>Return to main page: 
+        //                 <a href="/" class="back">here</a></h3>
+        //             </div>
+        //         </div>`;
 
-                let modal = document.getElementsByClassName("modal")[0];
-                let mCont = document.getElementsByClassName("modal-content")[0];
-                let btn = document.getElementsByTagName("span")[0];
-                modal.style.display = "block";
-                btn.addEventListener('click', () => {
-                    mCont.style.animationName = "hide";
-                    modal.style.animationName = "unfade";
-                    setTimeout(() => {
-                        modal.style.display = "none";
-                        location.href = '/';
-                    }, 1000);
-                });
-            });
-        }     
+        //         let modal = document.getElementsByClassName("modal")[0];
+        //         let mCont = document.getElementsByClassName("modal-content")[0];
+        //         let btn = document.getElementsByTagName("span")[0];
+        //         modal.style.display = "block";
+        //         btn.addEventListener('click', () => {
+        //             mCont.style.animationName = "hide";
+        //             modal.style.animationName = "unfade";
+        //             setTimeout(() => {
+        //                 modal.style.display = "none";
+        //                 location.href = '/';
+        //             }, 1000);
+        //         });
+        //     });
+        //}     
     });
 }
 
