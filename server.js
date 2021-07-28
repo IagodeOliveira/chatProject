@@ -19,14 +19,10 @@ mongoose.connect(process.env.MONGODB_URI, {
 mongoose.connection.on("error", () => { 
     console.log("An error happend on connection");
 });
-mongoose.connection.once("open", () => { console.log("DB loaded")
-
-    const CHAT = '/chat.html';
-    //const server = http.createServer(app);
-    const server = app
-    .use((req, res) => res.sendFile(CHAT, { root: __dirname }))
-    .listen(PORT, () => console.log(`Listening on ${PORT}`));
-
+mongoose.connection.once("open", () => {
+  console.log("DB loaded")
+  console.log('con');
+    const server = http.createServer(app);
     const io = socketIO(server);
 
     // Set static folder
