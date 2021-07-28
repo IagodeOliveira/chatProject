@@ -8,7 +8,8 @@ document.addEventListener('submit', (e) => {
     let room = document.getElementById('room').value;
     let obj = { username, password, room };
     // const URL = 'http://localhost:5000/login';
-    const URL = 'http://192.168.0.14:5000/login';
+    // const URL = 'http://192.168.0.14:5000/login';
+    const URL = 'https://chat-teste1.herokuapp.com/login';
     const options = {
         method: 'POST',
         headers: new Headers({'Content-type': 'application/json'}),
@@ -20,7 +21,8 @@ document.addEventListener('submit', (e) => {
             let token = res.headers.get('authorization-token');
             localStorage.setItem("authorization-token", token);
             // window.location.href = 'http://localhost:5000/chat.html';
-            window.location.href = 'http://192.168.0.14:5000/chat.html';
+            // window.location.href = 'http://192.168.0.14:5000/chat.html';
+            window.location.href = 'https://chat-teste1.herokuapp.com/chat.html';
         } else {
             res.text().then(data => {
                 alert(data);

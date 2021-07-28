@@ -39,7 +39,8 @@ let usuario = {};
 function redirect() {
     let store = localStorage.getItem('authorization-token');
     // const url = 'http://localhost:5000/chat';
-    const url = 'http://192.168.0.14:5000/chat';
+    // const url = 'http://192.168.0.14:5000/chat';
+    const url = 'https://chat-teste1.herokuapp.com/chat';
 
     const options = {
         method: 'POST',
