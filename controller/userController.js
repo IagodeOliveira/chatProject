@@ -49,14 +49,14 @@ userController.login = async function (req, res) {
 }
 
 userController.chat = async function (req, res) {
-    // if(!req.user) {
-    //     return res.status(401).send('Restricted Area');
-    // } 
-    //else {
+    if(!req.user) {
+        return res.status(401).send('Restricted Area');
+    } 
+    else {
         res.header('username', req.user.username);
         res.header('room', req.user.room);
         res.send();
-    //}
+    }
 }
 
 userController.find = async (username) => {
