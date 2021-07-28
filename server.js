@@ -26,7 +26,7 @@ mongoose.connection.once("open", () => {
 
     // Set static folder
     app.use(express.static(path.join(__dirname, 'public')));
-    app.use('https://chat-teste1.herokuapp.com/', express.json(), userRouter);
+    app.use('/', express.json(), userRouter);
 
     const botName = 'ChatCord Bot';
 
@@ -52,7 +52,9 @@ mongoose.connection.once("open", () => {
                         room: user.room,
                         users: res
                     });
-                });
+                }, function(error) {
+                  console.log(error);
+              });
 
                 // Update messages
                 updateMessages(user.room).then(res => {
@@ -62,7 +64,9 @@ mongoose.connection.once("open", () => {
                             user: user.username
                         });
                     }
-                });
+                }, function(error) {
+                  console.log(error);
+              });
             }, function(error) {
                 console.log(error);
             });
