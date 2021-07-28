@@ -11,15 +11,15 @@ const { userJoin, getCurrentUser, userLeave, getRoomUsers,
 const socketIO = require('socket.io');
 const PORT = process.env.PORT || 3000;
 
-mongoose.connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+// mongoose.connect(process.env.MONGO_URL, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// });
 
-mongoose.connection.on("error", () => { 
-    console.log("An error happend on connection");
-});
-mongoose.connection.once("open", () => { console.log("DB loaded")
+// mongoose.connection.on("error", () => { 
+//     console.log("An error happend on connection");
+// });
+// mongoose.connection.once("open", () => { console.log("DB loaded")
 
     const server = http.createServer(app);
     const io = socketIO(server);
@@ -103,4 +103,4 @@ mongoose.connection.once("open", () => { console.log("DB loaded")
     server.listen( PORT, () => {
         console.log(`Server running on port: ${PORT}`);
     });
-});
+//});
