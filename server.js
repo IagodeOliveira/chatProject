@@ -26,17 +26,14 @@ mongoose.connection.once("open", () => {
 
     // Set static folder
     app.use(express.static(path.join(__dirname, 'public')));
-    app.use('/', express.json(), userRouter);
+    app.use('https://chat-teste1.herokuapp.com/', express.json(), userRouter);
 
     const botName = 'ChatCord Bot';
 
     // Run when a client connects
     io.on('connection', socket => {
-      console.log('here1');
         socket.on('joinRoom', ({ username, room }) => {
-          console.log('here2');
             userJoin(socket.id, username, room).then(user => {
-              console.log('here3');
                 socket.join(user.room);
 
                 // Welcome current user
