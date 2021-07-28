@@ -21,7 +21,12 @@ mongoose.connection.on("error", () => {
 });
 mongoose.connection.once("open", () => { console.log("DB loaded")
 
-    const server = http.createServer(app);
+    const CHAT = '/chat.html';
+    //const server = http.createServer(app);
+    const server = app
+    .use((req, res) => res.sendFile(CHAT, { root: __dirname }))
+    .listen(PORT, () => console.log(`Listening on ${PORT}`));
+
     const io = socketIO(server);
 
     // Set static folder
