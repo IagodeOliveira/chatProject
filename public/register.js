@@ -1,3 +1,7 @@
+document.addEventListener('DOMContentLoaded', () => {
+  treatment();
+});
+
 
 document.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -27,3 +31,23 @@ document.addEventListener('submit', (e) => {
         error.message;
     });
 });
+
+function treatment() {
+  let store = localStorage.getItem('authorization-token');
+    // const url = 'http://localhost:5000/chat';
+    // const url = 'http://192.168.0.14:5000/chat';
+    const url = 'https://chat-teste1.herokuapp.com/chat';
+    const options = {
+        method: 'POST',
+        headers: new Headers( { 'authorization-token': store } ),
+    }
+
+    fetch(url, options).then(res => {
+      if(res.status == 200) {
+        location.href = 'https://chat-teste1.herokuapp.com/chat.html';
+      } else {
+        document.body.style.display = 'block'; 
+      }
+    });
+
+}

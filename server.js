@@ -38,7 +38,7 @@ mongoose.connection.once("open", () => {
                 socket.join(user.room);
 
                 // Welcome current user
-                socket.emit('message', formatMessage(botName, `Welcome to Chat
+                socket.emit('message', formatMessage(botName, `Welcome to ChitChat
                 ${username}`));
 
                 // Broadcast when a user connects
