@@ -29,6 +29,7 @@ document.addEventListener('submit', (e) => {
             });
         }
     }, (error) => {
+      console.log('eita');
         error.message;
     });
 });
