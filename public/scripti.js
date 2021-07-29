@@ -18,6 +18,7 @@ document.addEventListener('submit', (e) => {
 
     fetch(URL, options).then(res => {
         if(res.status == 200) {
+          console.log(res);
             let token = res.headers.get('authorization-token');
             localStorage.setItem("authorization-token", token);
             // window.location.href = 'http://localhost:5000/chat.html';
@@ -29,7 +30,6 @@ document.addEventListener('submit', (e) => {
             });
         }
     }, (error) => {
-      console.log('eita');
         error.message;
     });
 });
