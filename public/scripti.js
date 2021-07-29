@@ -1,3 +1,6 @@
+document.addEventListener('DOMContentLoaded', () => {
+  treatment();
+});
 
 // Sending login data
 // Fetching token and setting localStorage with it
@@ -18,7 +21,6 @@ document.addEventListener('submit', (e) => {
 
     fetch(URL, options).then(res => {
         if(res.status == 200) {
-          console.log(res);
             let token = res.headers.get('authorization-token');
             localStorage.setItem("authorization-token", token);
             // window.location.href = 'http://localhost:5000/chat.html';
@@ -34,25 +36,44 @@ document.addEventListener('submit', (e) => {
     });
 });
 
-// if(location.href == 'http://localhost:5000/#404') {
-    // if(location.href == 'http://192.168.0.14:5000/#404') {
-      if(location.href == 'https://chat-teste1.herokuapp.com/#404') {
-    let modal = document.getElementsByClassName("modal")[0];
-    let mCont = document.getElementsByClassName("modal-content")[0];
-    let btn = document.getElementsByTagName("span")[0];
-    modal.style.display = "block";
-    btn.addEventListener('click', () => {
-        mCont.style.animationName = "hide";
-        modal.style.animationName = "unfade";
-        setTimeout(() => {
-            modal.style.display = "none";
-            location.href = '/';
-        }, 1000);
+function treatment() {
+  // if(location.href == 'http://localhost:5000/#404') {
+  // if(location.href == 'http://192.168.0.14:5000/#404') {
+    if(location.href == 'https://chat-teste1.herokuapp.com/#404') {
+      let modal = document.getElementsByClassName("modal")[0];
+      let mCont = document.getElementsByClassName("modal-content")[0];
+      let btn = document.getElementsByTagName("span")[0];
+      modal.style.display = "block";
+      btn.addEventListener('click', () => {
+          mCont.style.animationName = "hide";
+          modal.style.animationName = "unfade";
+          setTimeout(() => {
+              modal.style.display = "none";
+              location.href = '/';
+          }, 1000);
+      });
+      setTimeout(() => {
+          modal.style.display = "none";
+          location.href = '/';
+      }, 5000);
+    }
+
+    let store = localStorage.getItem('authorization-token');
+    // const url = 'http://localhost:5000/chat';
+    // const url = 'http://192.168.0.14:5000/chat';
+    const url = 'https://chat-teste1.herokuapp.com/chat';
+    const options = {
+        method: 'POST',
+        headers: new Headers( { 'authorization-token': store } ),
+    }
+
+    fetch(url, options).then(res => {
+      if(res.status == 200) {
+        location.href = 'https://chat-teste1.herokuapp.com/chat.html';
+      } else {
+        document.body.style.display = 'block'; 
+      }
     });
-    setTimeout(() => {
-        modal.style.display = "none";
-        location.href = '/';
-    }, 5000);
 }
 
 
