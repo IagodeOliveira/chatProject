@@ -166,12 +166,12 @@ function outputMessage(message) {
   let previousMsgs = document.querySelectorAll('.text');
   if(previousMsgs.length > 0) {
     previousMsgs.forEach(previousMsg => {
-      if(previousMsg.innerHTML == `${message.username} has
-    joined the chat`) {
+      console.log(`${message.username} has joined the chat`);
+      console.log(previousMsg.innerHTML);
+      if(previousMsg.innerHTML == `${message.username} has joined the chat`) {
       previousMsg.parentElement.remove();
       }
-      if(previousMsg.innerHTML == `${message.username} has
-      left the chat`) {
+      if(previousMsg.innerHTML == `${message.username} has left the chat`) {
       previousMsg.parentElement.remove();
       }
     });
