@@ -163,7 +163,7 @@ function outputMessage(message) {
     }
   }
 
-  let previousMsgs = document.getElementsByClassName('text');
+  let previousMsgs = document.querySelectorAll('.text');
   if(previousMsgs.length > 0) {
     previousMsgs.forEach(previousMsg => {
       if(previousMsg.innerHTML == `${message.username} has
