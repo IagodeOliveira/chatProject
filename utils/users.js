@@ -35,7 +35,7 @@ async function getRoomUsers(room, user) {
     let users = [];
     let usuarios = await User.find({ room });
     usuarios.forEach(usuario => {
-      if(usuario != user) {
+      if(usuario.username !== user) {
         users.push(usuario.username);
       }
     })
