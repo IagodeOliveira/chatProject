@@ -31,13 +31,11 @@ async function userLeave(id) {
 }
 
 // Get room users
-async function getRoomUsers(room, user) {
+async function getRoomUsers(room) {
     let users = [];
     let usuarios = await User.find({ room });
     usuarios.forEach(usuario => {
-      if(usuario.username !== user) {
-        users.push(usuario.username);
-      }
+      users.push(usuario.username);
     })
     return users;
 }

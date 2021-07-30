@@ -49,7 +49,7 @@ mongoose.connection.once("open", () => {
 
                 // Send users and room info
                 getRoomUsers(user.room, user.username).then(res => {
-                    socket.emit('roomUsers', {
+                  io.to(user.room).emit('roomUsers', {
                         room: user.room,
                         users: res
                     });
@@ -93,7 +93,7 @@ mongoose.connection.once("open", () => {
     
                     // Send users and room info
                     getRoomUsers(user.room).then(res => {
-                      socket.emit('roomUsers', {
+                        io.to(user.room).emit('roomUsers', {
                             room: user.room,
                             users: res
                         });

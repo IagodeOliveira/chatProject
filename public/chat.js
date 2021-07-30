@@ -197,6 +197,12 @@ function outputRoomName(room) {
 
 // Add users name to DOM
 function outputUsers(users) {
+  let users2 = [];
+  users.forEach(user => {
+    if(user != usuario.username) {
+      users2.push(user);
+    }
+  });
   userList.innerHTML = `
-      ${users.map(user => `<li>${user}</li>`).join('')}`;
+      ${users2.map(user => `<li>${user}</li>`).join('')}`;
 }
