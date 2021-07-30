@@ -165,14 +165,19 @@ function outputMessage(message) {
 
   let previousMsgs = document.querySelectorAll('.text');
   let mess = message.text;
-    if(mess.includes('has joined the chat') || mess.includes('has left the chat')) {
-      previousMsgs.forEach(previousMsg => {
-        if(previousMsg.innerHTML == mess) {
-          previousMsg.parentElement.remove();
-        }
-      });
+  let mess1 = 'has joined the chat';
+  let mess2 = 'has left the chat';
+  if(mess.includes(mess1) || mess.includes(mess2)) {
+    if(mess == `${usuario.username} ${mess1}` || mess == `${usuario.username} ${mess2}`) {
+      return
     }
-
+    previousMsgs.forEach(previousMsg => {
+      if(previousMsg.innerHTML == mess) {
+        previousMsg.parentElement.remove();
+      }
+    });
+  }
+  
   const div = document.createElement('div');
   div.classList.add('message');
   div.innerHTML = `<p class="meta ${logged}">${message.username} <span>${message.time}</span></p>
