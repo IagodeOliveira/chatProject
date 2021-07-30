@@ -60,9 +60,9 @@ mongoose.connection.once("open", () => {
                 // Update messages
                 updateMessages(user.room).then(res => {
                     if(res.length > 0) {
-                        io.to(user.room).emit('messages', {
-                            msgs: res,
-                            user: user.username
+                      socket.emit('messages', {
+                            msgs: res
+                            // user: user.username
                         });
                     }
                 }, function(error) {

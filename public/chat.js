@@ -115,8 +115,8 @@ socket.on('roomUsers', ({ room, users }) => {
 });
 
 // Messages from database
-socket.on('messages', ({ msgs, user }) => {
-  outputMessages(msgs, user);
+socket.on('messages', ({ msgs }) => {
+  outputMessages(msgs);
 
   // Scroll down
   chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -169,27 +169,13 @@ function outputMessage(message) {
       ${message.text}
   </p>`;
   document.querySelector('.chat-messages').appendChild(div);
-  
-  // let divUsers = document.querySelectorAll('.meta');
-  // divUsers.forEach(divUser => {
-  //   if(message.username != 'ChatCord Bot') {
-  //     if(divUser.innerText.includes(message.username)) {
-  //       divUser.style.color = "aqua";
-  //     } else {
-  //       divUser.style.color = "red";
-  //     }
-  //   } else if(message.username == 'ChatCord Bot') {
-  //     divUser.style.color = "#555";
-  //   }
-  // });
-
 }
 
 // Output messages to DOM
-function outputMessages(messages, user) {
+function outputMessages(messages) {
   for(let i = 0; i < messages.length; i++) {
       let logged = 'not';
-      if(messages[i].username == user) {
+      if(messages[i].username == usuario.username) {
           logged = 'logged';
       }
 
