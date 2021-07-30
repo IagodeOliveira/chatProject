@@ -167,10 +167,10 @@ function outputMessage(message) {
   if(previousMsgs.length > 0) {
     previousMsgs.forEach(previousMsg => {
       console.log(previousMsg.innerHTML.includes('has joined the chat' || 'has left the chat'));
-      console.log(`${message.text}`);
-      console.log(previousMsg.innerHTML == `${message.text}`);
+      console.log(message.text);
+      console.log(previousMsg.innerHTML);
       if(previousMsg.innerHTML.includes('has joined the chat' || 'has left the chat')) {
-        if(previousMsg.innerHTML == `${message.text}`) {
+        if(previousMsg.innerHTML == message.text) {
           previousMsg.parentElement.remove();
         }
       }
