@@ -164,20 +164,14 @@ function outputMessage(message) {
   }
 
   let previousMsgs = document.querySelectorAll('.text');
-  // if(previousMsgs.length > 0) {
-    if(message.text.includes('has joined the chat' || 'has left the chat')) {
+  let mess = message.text.includes;
+    if(mess('has joined the chat') || mess('has left the chat')) {
       previousMsgs.forEach(previousMsg => {
-        console.log(previousMsg.innerHTML.includes('has joined the chat' || 'has left the chat'));
-        console.log(message.text);
-        console.log(previousMsg.innerHTML);
-        if(previousMsg.innerHTML.includes('has joined the chat' || 'has left the chat')) {
-          if(previousMsg.innerHTML == message.text) {
-            previousMsg.parentElement.remove();
-          }
+        if(previousMsg.innerHTML == message.text) {
+          previousMsg.parentElement.remove();
         }
       });
     }
-  //}
 
   const div = document.createElement('div');
   div.classList.add('message');
