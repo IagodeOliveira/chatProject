@@ -54,7 +54,6 @@ function redirect(expired) {
       usuario.room = res.headers.get('room');
     } else {
         res.text().then(data => {
-          console.log(expired);
           if(expired == true) {
             data = 'Your session has expired.'
             localStorage.setItem('expired', data);
@@ -90,12 +89,14 @@ function redirect(expired) {
 }
 
 // Session Expires
-setTimeout(removeStorage, 1135000);
+setTimeout(removeStorage, 1135000, '1');
 
-function removeStorage() {
+function removeStorage(logOut) {
   localStorage.removeItem("authorization-token");
-  let expired = true;
-  redirect(expired);
+  if(logOut) {
+    let expired = true;
+    redirect(expired);
+  }
 }
 
 const socket = io();

@@ -48,7 +48,7 @@ mongoose.connection.once("open", () => {
                         joined the chat`));
 
                 // Send users and room info
-                getRoomUsers(user.room).then(res => {
+                getRoomUsers(user.room, user.username).then(res => {
                     io.to(user.room).emit('roomUsers', {
                         room: user.room,
                         users: res
