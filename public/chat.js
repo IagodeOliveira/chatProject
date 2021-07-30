@@ -164,10 +164,10 @@ function outputMessage(message) {
   }
 
   let previousMsgs = document.querySelectorAll('.text');
-  let mess = message.text.includes;
-    if(mess('has joined the chat') || mess('has left the chat')) {
+  let mess = message.text;
+    if(mess.includes('has joined the chat') || mess.includes('has left the chat')) {
       previousMsgs.forEach(previousMsg => {
-        if(previousMsg.innerHTML == message.text) {
+        if(previousMsg.innerHTML == mess) {
           previousMsg.parentElement.remove();
         }
       });
