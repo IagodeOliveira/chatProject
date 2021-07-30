@@ -153,26 +153,35 @@ chatForm.addEventListener('submit', (e) => {
 
 // Output message to DOM
 function outputMessage(message) {
+  let logged = 'bot';
+  if(messages.username != 'ChatCord Bot') {
+    if(messages.username == usuario.username) {
+      logged = 'logged';
+    } else {
+      logged = 'not';
+    }
+  }
+
   const div = document.createElement('div');
   div.classList.add('message');
-  div.innerHTML = `<p class="meta">${message.username} <span>${message.time}</span></p>
+  div.innerHTML = `<p class="meta ${logged}">${message.username} <span>${message.time}</span></p>
   <p class="text">
       ${message.text}
   </p>`;
   document.querySelector('.chat-messages').appendChild(div);
   
-  let divUsers = document.querySelectorAll('.meta');
-  divUsers.forEach(divUser => {
-    if(message.username != 'ChatCord Bot') {
-      if(divUser.innerText.includes(message.username)) {
-        divUser.style.color = "aqua";
-      } else {
-        divUser.style.color = "red";
-      }
-    } else if(message.username == 'ChatCord Bot') {
-      divUser.style.color = "#555";
-    }
-  });
+  // let divUsers = document.querySelectorAll('.meta');
+  // divUsers.forEach(divUser => {
+  //   if(message.username != 'ChatCord Bot') {
+  //     if(divUser.innerText.includes(message.username)) {
+  //       divUser.style.color = "aqua";
+  //     } else {
+  //       divUser.style.color = "red";
+  //     }
+  //   } else if(message.username == 'ChatCord Bot') {
+  //     divUser.style.color = "#555";
+  //   }
+  // });
 
 }
 
