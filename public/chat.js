@@ -166,8 +166,10 @@ function outputMessage(message) {
     if(message.username != 'ChatCord Bot') {
       if(divUser.innerText.includes(message.username)) {
         divUser.style.color = "aqua";
+      } else {
+        divUser.style.color = "red";
       }
-    } else {
+    } else if(message.username == 'ChatCord Bot') {
       divUser.style.color = "#555";
     }
   });
