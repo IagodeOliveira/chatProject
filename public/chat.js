@@ -154,8 +154,8 @@ chatForm.addEventListener('submit', (e) => {
 // Output message to DOM
 function outputMessage(message) {
   let logged = 'bot';
-  if(messages.username != 'ChatCord Bot') {
-    if(messages.username == usuario.username) {
+  if(message.username != 'ChatCord Bot') {
+    if(message.username == usuario.username) {
       logged = 'logged';
     } else {
       logged = 'not';
