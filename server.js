@@ -38,14 +38,12 @@ mongoose.connection.once("open", () => {
                 socket.join(user.room);
 
                 // Welcome current user
-                socket.emit('message', formatMessage(botName, `Welcome to ChitChat
-                ${username}`));
+                socket.emit('message', formatMessage(botName, `Welcome to ChitChat ${username}`));
 
                 // Broadcast when a user connects
                 socket.broadcast.
                     to(user.room).
-                        emit('message', formatMessage(botName, `${username} has
-                        joined the chat`));
+                        emit('message', formatMessage(botName, `${username} has joined the chat`));
 
                 // Send users and room info
                 getRoomUsers(user.room, user.username).then(res => {
@@ -88,8 +86,7 @@ mongoose.connection.once("open", () => {
             userLeave(socket.id).then(user => {
                 if(user) {
                     io.to(user.room).
-                        emit('message', formatMessage(botName, `${user.username}
-                        has left the chat`));
+                        emit('message', formatMessage(botName, `${user.username} has left the chat`));
     
                     // Send users and room info
                     getRoomUsers(user.room).then(res => {
