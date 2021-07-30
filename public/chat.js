@@ -163,6 +163,19 @@ function outputMessage(message) {
     }
   }
 
+  let previousMsgs = document.getElementsByClassName('text');
+  previousMsgs.forEach(previousMsg => {
+    if(previousMsg.innerHTML == `${message.username} has
+  joined the chat`) {
+    previousMsg.parentElement.remove();
+    }
+    if(previousMsg.innerHTML == `${message.username} has
+    left the chat`) {
+    previousMsg.parentElement.remove();
+    }
+  });
+  
+
   const div = document.createElement('div');
   div.classList.add('message');
   div.innerHTML = `<p class="meta ${logged}">${message.username} <span>${message.time}</span></p>
