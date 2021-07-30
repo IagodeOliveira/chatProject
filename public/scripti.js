@@ -1,3 +1,5 @@
+let userInput = document.getElementById('username');
+
 document.addEventListener('DOMContentLoaded', () => {
   treatment();
 });
@@ -6,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Fetching token and setting localStorage with it
 document.addEventListener('submit', (e) => {
     e.preventDefault();
-    let username = document.getElementById('username').value;
+    let username = userInput.value;
     let password = document.getElementById('password').value;
     let room = document.getElementById('room').value;
     let obj = { username, password, room };
@@ -69,9 +71,18 @@ function treatment() {
 
     fetch(url, options).then(res => {
       if(res.status == 200) {
+        // location.href = 'http://192.168.0.14:5000/chat.html';
         location.href = 'https://chat-teste1.herokuapp.com/chat.html';
       } else {
-        document.body.style.display = 'block'; 
+        let expired = localStorage.getItem('expired');
+        document.body.style.display = 'block';
+        userInput.focus();
+        
+        if(expired !== null) {
+          let exp = document.getElementsByClassName('expire')[0];
+          exp.style.display = 'block';
+          localStorage.removeItem("expired");
+        }
       }
     });
 }

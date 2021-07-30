@@ -42,7 +42,7 @@ userController.login = async function (req, res) {
     let pass = bcrypt.compareSync(password, selectedUser.password);
     if(!pass) return res.status(400).send('Username or Password incorrect');
 
-    const token = jwt.sign( { id: selectedUser.id, username, room: selectedUser.room}, process.env.TOKEN_SECRET, {expiresIn: 1110});
+    const token = jwt.sign( { id: selectedUser.id, username, room: selectedUser.room}, process.env.TOKEN_SECRET, {expiresIn: 1135});
     res.header('authorization-token', token);
 
     res.send();

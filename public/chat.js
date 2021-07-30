@@ -54,8 +54,12 @@ function redirect(expired) {
       usuario.room = res.headers.get('room');
     } else {
         res.text().then(data => {
+          console.log(expired);
           if(expired == true) {
             data = 'Your session has expired.'
+            localStorage.setItem('expired', data);
+            // location.href = '/';
+            location.href == 'https://chat-teste1.herokuapp.com';
           }
           document.body.style.display = 'block';
           document.body.innerHTML =
@@ -86,7 +90,7 @@ function redirect(expired) {
 }
 
 // Session Expires
-setTimeout(removeStorage, 1110000);
+setTimeout(removeStorage, 1135000);
 
 function removeStorage() {
   localStorage.removeItem("authorization-token");
@@ -136,7 +140,7 @@ chatForm.addEventListener('submit', (e) => {
       alert('Message is longer than the maximum allowed length (100)');
       e.target.elements.msg.value = '';
       e.target.elements.msg.focus();
-      return;
+      return
   }
 
   // Emit message to server
@@ -149,17 +153,25 @@ chatForm.addEventListener('submit', (e) => {
 
 // Output message to DOM
 function outputMessage(message) {
-  let logged = 'bot';
-      if(message.username != 'ChatCord Bot') {
-          logged = 'logged';
-      }
   const div = document.createElement('div');
   div.classList.add('message');
-  div.innerHTML = `<p class="meta ${logged}">${message.username} <span>${message.time}</span></p>
+  div.innerHTML = `<p class="meta">${message.username} <span>${message.time}</span></p>
   <p class="text">
       ${message.text}
   </p>`;
   document.querySelector('.chat-messages').appendChild(div);
+  
+  let divUsers = document.querySelectorAll('.meta');
+  divUsers.forEach(divUser => {
+    if(message.username != 'ChatCord Bot') {
+      if(divUser.innerText.includes(message.username)) {
+        divUser.style.color = "aqua";
+      }
+    } else {
+      divUser.style.color = "#555";
+    }
+  });
+
 }
 
 // Output messages to DOM

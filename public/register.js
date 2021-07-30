@@ -1,3 +1,5 @@
+let userInput = document.getElementById('username');
+
 document.addEventListener('DOMContentLoaded', () => {
   treatment();
 });
@@ -5,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('submit', (e) => {
     e.preventDefault();
-    let username = document.getElementById('username').value;
+    let username = userInput.value;
     let password = document.getElementById('password').value;
     let obj = { username, password };
     // const URL = 'http://localhost:5000/register';
@@ -44,9 +46,11 @@ function treatment() {
 
     fetch(url, options).then(res => {
       if(res.status == 200) {
+        // location.href = 'http://192.168.0.14:5000/chat.html'
         location.href = 'https://chat-teste1.herokuapp.com/chat.html';
       } else {
-        document.body.style.display = 'block'; 
+        document.body.style.display = 'block';
+        userInput.focus();
       }
     });
 
