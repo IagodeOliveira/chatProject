@@ -164,7 +164,7 @@ function outputMessage(message) {
   }
 
   let previousMsgs = document.getElementsByClassName('text');
-  if(previousMsgs) {
+  if(previousMsgs != undefined) {
     previousMsgs.forEach(previousMsg => {
       if(previousMsg.innerHTML == `${message.username} has
     joined the chat`) {
@@ -176,7 +176,6 @@ function outputMessage(message) {
       }
     });
   }
-  
 
   const div = document.createElement('div');
   div.classList.add('message');
