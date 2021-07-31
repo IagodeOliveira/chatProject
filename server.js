@@ -57,7 +57,7 @@ mongoose.connection.once('open', () => {
             room: user.room,
             users: res
           });
-        }, function(error) {
+        }).catch((error) => {
           console.log(error);
         });
 
@@ -66,10 +66,10 @@ mongoose.connection.once('open', () => {
           if(res.length > 0) {
             socket.emit('messages', { msgs: res });
           }
-        }, function(error) {
+        }).catch((error) => {
           console.log(error);
         });
-      }, function(error) {
+      }).catch((error) => {
         console.log(error);
       });
     });
@@ -79,8 +79,8 @@ mongoose.connection.once('open', () => {
       getCurrentUser(socket.id, msg).then(user => {
         io.to(user.room).emit('message',
           formatMessage(user.username, msg));
-      }, function(error) {
-          console.log(error);
+      }).catch((error) => {
+        console.log(error);
       });
     });
 
@@ -98,12 +98,12 @@ mongoose.connection.once('open', () => {
               room: user.room,
               users: res
             });
-          }, function(error) {
+          }).catch((error) => {
             console.log(error);
           });
         }
-      }, function(error) {
-          console.log(error);
+      }).catch((error) => {
+        console.log(error);
       });
     });
   });

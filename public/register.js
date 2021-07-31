@@ -17,20 +17,17 @@ document.addEventListener('submit', (e) => {
     body: JSON.stringify(obj),
   };
 
-  fetch(URL, options).then(
-    (res) => {
-      if (res.status == 200) {
-        location.href = '/';
-      } else {
-        res.text().then((data) => {
-          alert(data);
-        });
-      }
-    },
-    (error) => {
-      error.message;
-    }
-  );
+fetch(URL, options).then((res) => {
+  if (res.status == 200) {
+    location.href = '/';
+  } else {
+    res.text().then((data) => {
+      alert(data);
+    });
+  }
+  });
+}).catch((error) => {
+  console.log(error);
 });
 
 // Checks if user is already logged in
@@ -49,5 +46,7 @@ function treatment() {
       document.body.style.display = 'block';
       userInput.focus();
     }
+  }).catch((error) => {
+    console.log(error);
   });
 }

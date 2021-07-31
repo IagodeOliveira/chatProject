@@ -54,7 +54,7 @@ function redirect(expired) {
         if (expired == true) {
           data = 'Your session has expired.';
           localStorage.setItem('expired', data);
-          location.href == '/';
+          location.href = '/';
         }
         document.body.style.display = 'block';
         document.body.innerHTML = `
@@ -70,6 +70,7 @@ function redirect(expired) {
         let modal = document.getElementsByClassName('modal')[0];
         let mCont = document.getElementsByClassName('modal-content')[0];
         let btn = document.getElementsByTagName('span')[0];
+
         modal.style.display = 'block';
         btn.addEventListener('click', () => {
           mCont.style.animationName = 'hide';
@@ -81,11 +82,13 @@ function redirect(expired) {
         });
       });
     }
+  }).catch((error) => {
+    console.log(error);
   });
 }
 
 // Session Expires
-setTimeout(removeStorage, 18000000, '1');
+setTimeout(removeStorage, 1800000, '1');
 
 function removeStorage(logOut) {
   localStorage.removeItem('authorization-token');

@@ -24,7 +24,7 @@ userController.register = async function (req, res) {
     const savedUser = await user.save();
     res.send("Registered new user: " + savedUser);
   } catch (err) {
-    res.status(400).send("User could not be registered");
+    return res.status(400).send("User could not be registered");
   }
 };
 
@@ -50,13 +50,19 @@ userController.login = async function (req, res) {
   let pass = bcrypt.compareSync(password, selectedUser.password);
   if (!pass) return res.status(400).send("Username or Password incorrect");
 
-  const token = jwt.sign(
-    { id: selectedUser.id, username, room: selectedUser.room },
-    process.env.TOKEN_SECRET,
-    { expiresIn: 30 }
-  );
-  res.header("authorization-token", token);
-  res.send();
+  try {
+    const token = jwt.sign(
+      { id: selectedUser.id, username, room: selectedUser.room },
+      process.env.TOKEN_SECRET,
+      { expiresIn: 1800 }
+    );
+
+    res.header("authorization-token", token);
+    res.send();
+
+  } catch (err) {
+    return res.status(400).send("Could not authenticated");
+  }
 };
 
 userController.chat = async function (req, res) {
@@ -69,10 +75,10 @@ userController.chat = async function (req, res) {
   }
 };
 
-userController.find = async (username) => {
-  const msgs = await User.findOne({ username });
-  return msgs;
-};
+// userController.find = async (username) => {
+//   const msgs = await User.findOne({ username });
+//   return msgs;
+// };
 
 userController.error = function (req, res) {
   res.redirect("/#404");

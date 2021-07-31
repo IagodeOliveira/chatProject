@@ -18,27 +18,24 @@ document.addEventListener('submit', (e) => {
     body: JSON.stringify(obj),
   };
 
-  fetch(URL, options).then(
-    (res) => {
-      if (res.status == 200) {
-        let token = res.headers.get('authorization-token');
-        localStorage.setItem('authorization-token', token);
-        location.href = '/chat.html';
-      } else {
-        res.text().then((data) => {
-          alert(data);
-        });
-      }
-    },
-    (error) => {
-      error.message;
+  fetch(URL, options).then((res) => {
+    if (res.status == 200) {
+      let token = res.headers.get('authorization-token');
+      localStorage.setItem('authorization-token', token);
+      location.href = '/chat.html';
+    } else {
+      res.text().then((data) => {
+        alert(data);
+      });
     }
-  );
+  }).catch((error) => {
+    console.log(error);
+  });
 });
 
 // Handles unexisting pages / Checks if user is already logged in
 function treatment() {
-  if (location.href == '/#404') {
+  if (location.href == 'http://localhost:5000/#404') {
     let modal = document.getElementsByClassName('modal')[0];
     let mCont = document.getElementsByClassName('modal-content')[0];
     let btn = document.getElementsByTagName('span')[0];
@@ -78,5 +75,7 @@ function treatment() {
         localStorage.removeItem('expired');
       }
     }
+  }).catch((error) => {
+    console.log(error);
   });
 }
