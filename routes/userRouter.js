@@ -5,7 +5,7 @@ const auth = require('../controller/auth');
 const cors = require('cors');
 
 // const options = {
-//   origin: 'http://localhost:5000'
+//   origin: '...'
 // }
 
 // router.use(cors(options));
