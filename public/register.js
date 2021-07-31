@@ -10,7 +10,7 @@ document.addEventListener('submit', (e) => {
   let username = userInput.value;
   let password = document.getElementById('password').value;
   let obj = { username, password };
-  const URL = 'https://chat-teste1.herokuapp.com/register';
+  const URL = 'http://localhost:5000/register';
   const options = {
     method: 'POST',
     headers: new Headers({ 'Content-type': 'application/json' }),
@@ -20,7 +20,7 @@ document.addEventListener('submit', (e) => {
   fetch(URL, options).then(
     (res) => {
       if (res.status == 200) {
-        window.location.href = 'https://chat-teste1.herokuapp.com';
+        location.href = '/';
       } else {
         res.text().then((data) => {
           alert(data);
@@ -36,7 +36,7 @@ document.addEventListener('submit', (e) => {
 // Checks if user is already logged in
 function treatment() {
   let store = localStorage.getItem('authorization-token');
-  const url = 'https://chat-teste1.herokuapp.com/chat';
+  const url = 'http://localhost:5000/chat';
   const options = {
     method: 'POST',
     headers: new Headers({ 'authorization-token': store }),
@@ -44,7 +44,7 @@ function treatment() {
 
   fetch(url, options).then((res) => {
     if (res.status == 200) {
-      location.href = 'https://chat-teste1.herokuapp.com/chat.html';
+      location.href = '/chat.html';
     } else {
       document.body.style.display = 'block';
       userInput.focus();

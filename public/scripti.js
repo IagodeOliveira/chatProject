@@ -11,7 +11,7 @@ document.addEventListener('submit', (e) => {
   let password = document.getElementById('password').value;
   let room = document.getElementById('room').value;
   let obj = { username, password, room };
-  const URL = 'https://chat-teste1.herokuapp.com/login';
+  const URL = 'http://localhost:5000/login';
   const options = {
     method: 'POST',
     headers: new Headers({ 'Content-type': 'application/json' }),
@@ -23,7 +23,7 @@ document.addEventListener('submit', (e) => {
       if (res.status == 200) {
         let token = res.headers.get('authorization-token');
         localStorage.setItem('authorization-token', token);
-        location.href = 'https://chat-teste1.herokuapp.com/chat.html';
+        location.href = '/chat.html';
       } else {
         res.text().then((data) => {
           alert(data);
@@ -38,7 +38,7 @@ document.addEventListener('submit', (e) => {
 
 // Handles unexisting pages / Checks if user is already logged in
 function treatment() {
-  if (location.href == 'https://chat-teste1.herokuapp.com/#404') {
+  if (location.href == '/#404') {
     let modal = document.getElementsByClassName('modal')[0];
     let mCont = document.getElementsByClassName('modal-content')[0];
     let btn = document.getElementsByTagName('span')[0];
@@ -58,7 +58,7 @@ function treatment() {
   }
 
   let store = localStorage.getItem('authorization-token');
-  const url = 'https://chat-teste1.herokuapp.com/chat';
+  const url = 'http://localhost:5000/chat';
   const options = {
     method: 'POST',
     headers: new Headers({ 'authorization-token': store }),
@@ -66,7 +66,7 @@ function treatment() {
 
   fetch(url, options).then((res) => {
     if (res.status == 200) {
-      location.href = 'https://chat-teste1.herokuapp.com/chat.html';
+      location.href = '/chat.html';
     } else {
       let expired = localStorage.getItem('expired');
       document.body.style.display = 'block';

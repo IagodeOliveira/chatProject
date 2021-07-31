@@ -37,7 +37,7 @@ let usuario = {};
 
 function redirect(expired) {
   let store = localStorage.getItem('authorization-token');
-  const url = 'https://chat-teste1.herokuapp.com/chat';
+  const url = 'http://localhost:5000/chat';
 
   const options = {
     method: 'POST',
@@ -54,7 +54,7 @@ function redirect(expired) {
         if (expired == true) {
           data = 'Your session has expired.';
           localStorage.setItem('expired', data);
-          location.href == 'https://chat-teste1.herokuapp.com';
+          location.href == '/';
         }
         document.body.style.display = 'block';
         document.body.innerHTML = `
