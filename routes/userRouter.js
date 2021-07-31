@@ -10,7 +10,7 @@ const cors = require('cors');
 
 // router.use(cors(options));
 
-router.use(cors());
+// router.use(cors());
 
 router.post('/login', userController.login);
 
