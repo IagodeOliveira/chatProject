@@ -37,7 +37,7 @@ let usuario = {};
 
 function redirect(expired) {
   let store = localStorage.getItem('authorization-token');
-  const url = 'http://localhost:5000/chat';
+  const url = '/chat';
 
   const options = {
     method: 'POST',

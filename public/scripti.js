@@ -11,7 +11,7 @@ document.addEventListener('submit', (e) => {
   let password = document.getElementById('password').value;
   let room = document.getElementById('room').value;
   let obj = { username, password, room };
-  const URL = 'http://localhost:5000/login';
+  const URL = '/login';
   const options = {
     method: 'POST',
     headers: new Headers({ 'Content-type': 'application/json' }),
@@ -55,7 +55,7 @@ function treatment() {
   }
 
   let store = localStorage.getItem('authorization-token');
-  const url = 'http://localhost:5000/chat';
+  const url = '/chat';
   const options = {
     method: 'POST',
     headers: new Headers({ 'authorization-token': store }),

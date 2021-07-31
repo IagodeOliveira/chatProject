@@ -10,7 +10,7 @@ document.addEventListener('submit', (e) => {
   let username = userInput.value;
   let password = document.getElementById('password').value;
   let obj = { username, password };
-  const URL = 'http://localhost:5000/register';
+  const URL = '/register';
   const options = {
     method: 'POST',
     headers: new Headers({ 'Content-type': 'application/json' }),
@@ -33,7 +33,7 @@ fetch(URL, options).then((res) => {
 // Checks if user is already logged in
 function treatment() {
   let store = localStorage.getItem('authorization-token');
-  const url = 'http://localhost:5000/chat';
+  const url = '/chat';
   const options = {
     method: 'POST',
     headers: new Headers({ 'authorization-token': store }),
