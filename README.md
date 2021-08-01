@@ -29,9 +29,13 @@
 
 Chitchat is a Realtime Chat App made basically using Node.js, Express and Socket.IO
 
+## Heroku
+
+- [ChitChat Page at Heroku](https://chat-teste1.herokuapp.com/)
+
 ## Author
 
-- Website - [Iago D. de Oliveira Marques](https://chat-teste1.herokuapp.com/)
+- Website - [Iago D. de Oliveira Marques](https://github.com/IagodeOliveira/)
 
 ## Acknowledgments
 
