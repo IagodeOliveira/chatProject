@@ -21,9 +21,9 @@
 
 ### Screenshot
 
-![](./images/chatRoom.jpg)
-![](./images/login.jpg)
-![](./images/SignUp.jpg)
+![](./public/images/chatRoom.jpg)
+![](./public/images/login.jpg)
+![](./public/images/SignUp.jpg)
 
 ## Built with
 
