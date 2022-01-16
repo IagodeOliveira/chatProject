@@ -27,7 +27,7 @@
 
 ## Built with
 
-Chitchat is a Realtime Chat App made basically using Node.js, Express and Socket.IO
+Chitchat is a Realtime Chat App made basically using Socket.IO, Node.js, Express and MongoDB.
 
 ## Heroku
 
